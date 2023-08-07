@@ -1,4 +1,4 @@
-# app
+# SAM-Cli-Postgres_connection-SQS_Connection
 
 This project contains source code and supporting files for a serverless application that you can deploy with the SAM CLI. It includes the following files and folders.
 
@@ -67,10 +67,17 @@ The SAM CLI reads the application template to determine the API's routes and the
 
 ```yaml
       Events:
-        Producer:
-          Type: Api
+        producer:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
           Properties:
-            Path: /hello
+            Path: /producer
+            Method: get
+
+      Events:
+        receiver:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /receiver
             Method: get
 ```
 
